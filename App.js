@@ -9,7 +9,6 @@ import SearchResultsScreen from "./src/screens/SearchResults";
 import DestinationSearchScreen from "./src/screens/DestinationSearch";
 import GuestScreen from "./src/screens/Guests";
 
-// const post1 = feed[2];
 
 export default function App() {
     return (
