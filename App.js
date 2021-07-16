@@ -1,21 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler'
+import {StatusBar} from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import HomeScreen from "./src/screens/Home";
+import Post from "./src/components/post";
+import feed from "./assets/data/feed";
+import SearchResultsScreen from "./src/screens/SearchResults";
+import DestinationSearchScreen from "./src/screens/DestinationSearch";
+import GuestScreen from "./src/screens/Guests";
+
+// const post1 = feed[2];
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    return (
+
+        <>
+            <SafeAreaView style={styles.container}>
+
+
+                <StatusBar style="auto"/>
+                <GuestScreen />
+            </SafeAreaView>
+        </>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        // flex: 1,
+        backgroundColor: '#fff',
+        // alignItems: 'center',
+        justifyContent: 'center',
+    },
 });
