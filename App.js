@@ -8,6 +8,7 @@ import feed from "./assets/data/feed";
 import SearchResultsScreen from "./src/screens/SearchResults";
 import DestinationSearchScreen from "./src/screens/DestinationSearch";
 import GuestScreen from "./src/screens/Guests";
+import Router from "./src/navigations/Router";
 
 
 export default function App() {
@@ -18,7 +19,7 @@ export default function App() {
 
 
                 <StatusBar style="auto"/>
-                <GuestScreen />
+                <Router />
             </SafeAreaView>
         </>
     );

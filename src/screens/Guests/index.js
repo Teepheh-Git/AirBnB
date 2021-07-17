@@ -8,6 +8,9 @@ const GuestScreen = () => {
     const [children, setChildren] = useState(0);
     const [infants, setInfants] = useState(0);
 
+    const navigation = useNavigation();
+    const route = useRoute();
+
     return (
         <View style={{justifyContent: 'space-between', height: '100%'}}>
 
@@ -78,6 +81,34 @@ const GuestScreen = () => {
                     </View>
                 </View>
             </View>
+
+            <Pressable
+                onPress={() =>
+                    navigation.navigate('Home', {
+                        screen: 'Explore',
+                        params: {
+                            screen: 'SearchResults',
+                            // params: {
+                            //     guests: adults + children,
+                            //     viewport: route.params.viewport,
+                            // }
+                        },
+                    })
+                }
+                style={{
+                    marginBottom: 20,
+                    backgroundColor: '#f15454',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: 50,
+                    marginHorizontal: 20,
+                    borderRadius: 10,
+                }}>
+                <Text style={{fontSize: 20, color: 'white', fontWeight: 'bold'}}>
+                    Search
+                </Text>
+            </Pressable>
+
 
         </View>
     );
