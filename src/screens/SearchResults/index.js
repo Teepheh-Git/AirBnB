@@ -6,10 +6,9 @@ import Post from "../../components/post";
 const SearchResultsScreen = () => {
     return (
 
-
         <View>
 
-            <FlatList data={feed} renderItem={({item}) => <Post post={item} />}/>
+            <FlatList data={feed} renderItem={({item}) => <Post post={item}/>}/>
 
         </View>
     );
