@@ -5,6 +5,7 @@ import {createStackNavigator} from "@react-navigation/stack";
 import DestinationSearchScreen from "../screens/DestinationSearch";
 import GuestScreen from "../screens/Guests";
 import HomeTabNavigator from "./HomeTabNavigator";
+import PostScreen from "../screens/PostScreen";
 
 const Stack = createStackNavigator();
 const w = Dimensions.get("window").width
@@ -45,13 +46,13 @@ const Router = () => {
                     }}
                 />
 
-                {/*<Stack.Screen*/}
-                {/*    name={"Post"}*/}
-                {/*    component={PostScreen}*/}
-                {/*    options={{*/}
-                {/*        title: "Accommodation"*/}
-                {/*    }}*/}
-                {/*/>*/}
+                <Stack.Screen
+                    name={"Post"}
+                    component={PostScreen}
+                    options={{
+                        title: "Accommodation"
+                    }}
+                />
             </Stack.Navigator>
         </NavigationContainer>
         </View>

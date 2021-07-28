@@ -5,11 +5,17 @@ import {useNavigation} from '@react-navigation/native';
 const days = 7;
 const Post = (props) => {
 
-    const post = props.post
+    const post = props.post;
+
+    const navigation = useNavigation();
+
+    const goToPostPage = () => {
+        navigation.navigate('Post', {postId: post.id});
+    }
 
     return (
         <Pressable
-            // onPress={goToPostPage}
+            onPress={goToPostPage}
             style={styles.container}>
 
             {/* Image  */}
