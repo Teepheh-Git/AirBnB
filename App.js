@@ -2,16 +2,12 @@ import 'react-native-gesture-handler'
 import {StatusBar} from 'expo-status-bar';
 import React from 'react';
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
-import HomeScreen from "./src/screens/Home";
-import Post from "./src/components/post";
-import feed from "./assets/data/feed";
-import SearchResults from "./src/screens/SearchResults";
-import DestinationSearchScreen from "./src/screens/DestinationSearch";
-import GuestScreen from "./src/screens/Guests";
 import Router from "./src/navigations/Router";
 
+import {withAuthenticator} from "aws-amplify-react-native";
 
-export default function App() {
+
+const App: () => React$Node = () => {
     return (
 
         <>
@@ -27,6 +23,8 @@ export default function App() {
         </>
     );
 }
+
+export default withAuthenticator(App)
 
 const styles = StyleSheet.create({
     container: {

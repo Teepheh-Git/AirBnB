@@ -1,14 +1,42 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {FlatList, View} from "react-native";
 import feed from "../../../assets/data/feed";
 import Post from "../../components/post";
+import {API, graphqlOperation} from "aws-amplify";
+import {listPosts} from '../../graphql/queries';
+import {useRoute} from "@react-navigation/native";
+
 
 const SearchResultsScreen = () => {
+
+
+    const [posts, setPosts] = useState([])
+    const route =useRoute()
+
+
+    useEffect(() => {
+
+        const fetchPosts = async () => {
+            try {
+                const postResult = await API.graphql(
+                    graphqlOperation(listPosts)
+                )
+
+                setPosts(postResult.data.listPosts.items);
+
+            } catch (e) {
+                console.log(e)
+            }
+        }
+
+        fetchPosts();
+    }, [])
+
     return (
 
         <View>
 
-            <FlatList data={feed} renderItem={({item}) => <Post post={item}/>}/>
+            <FlatList data={posts} renderItem={({item}) => <Post post={item}/>}/>
 
         </View>
     );

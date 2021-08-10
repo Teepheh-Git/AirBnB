@@ -6,12 +6,16 @@ import places from '../../../assets/data/feed'
 import CustomMarker from "../../components/CustomMarker";
 import PostCarouselItem from "../../components/PostCarouselItem";
 
+import {API, graphqlOperation} from "aws-amplify";
+import {listPosts} from '../../graphql/queries';
+
 
 const SearchResultsMap = (props) => {
 
         // const {posts} = props;
 
         const [selectedPlaceId, setSelectedPlaceId] = useState(null);
+        const [posts, setPosts] = useState([])
         //
         const flatlist = useRef();
         const map = useRef();
@@ -27,18 +31,37 @@ const SearchResultsMap = (props) => {
         const width = useWindowDimensions().width;
 
         useEffect(() => {
+
+            const fetchPosts = async () => {
+                try {
+                    const postResult = await API.graphql(
+                        graphqlOperation(listPosts)
+                    )
+
+                    setPosts(postResult.data.listPosts.items);
+
+                } catch (e) {
+                    console.log(e)
+                }
+            }
+
+            fetchPosts();
+        });
+
+
+        useEffect(() => {
             if (!selectedPlaceId || !flatlist) {
                 return;
             }
-            const index = places.findIndex(place => place.id === selectedPlaceId)
+            const index = posts.findIndex(place => place.id === selectedPlaceId)
             flatlist.current.scrollToIndex({index})
 
-            const selectedPlace = places[index];
-            const region={
-                latitude: selectedPlace.coordinate.latitude,
-                longitude: selectedPlace.coordinate.longitude,
-                latitudeDelta:0.8,
-                longitudeDelta:0.8,
+            const selectedPlace = posts[index];
+            const region = {
+                latitude: selectedPlace.latitude,
+                longitude: selectedPlace.longitude,
+                latitudeDelta: 0.8,
+                longitudeDelta: 0.8,
             }
             map.current.animateToRegion(region);
 
@@ -58,9 +81,9 @@ const SearchResultsMap = (props) => {
                     }}
                 >
 
-                    {places.map(place => (
+                    {posts.map(place => (
                         <CustomMarker
-                            coordinate={place.coordinate}
+                            coordinate={{latitude: place.latitude, longitude: place.longitude}}
                             price={place.newPrice}
                             isSelected={place.id === selectedPlaceId}
                             onPress={() => setSelectedPlaceId(place.id)}
@@ -71,8 +94,8 @@ const SearchResultsMap = (props) => {
                 <View style={{position: 'absolute', bottom: 10}}>
                     <FlatList
                         ref={flatlist}
-                        data={places}
-                        // data={posts}
+                        // data={places}
+                        data={posts}
                         renderItem={({item}) => <PostCarouselItem post={item}/>}
                         horizontal
                         showsHorizontalScrollIndicator={false}

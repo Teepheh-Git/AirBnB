@@ -11,5 +11,23 @@
       "StackId": "arn:aws:cloudformation:eu-central-1:144216176388:stack/amplify-airbnb-dev-152509/f6febcf0-f141-11eb-9c9c-02a0c6cea0d8",
       "AmplifyAppId": "d24v9zh7lxoolj"
     }
+  },
+  "devo": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-airbnb-devo-04231-authRole",
+      "UnauthRoleArn": "arn:aws:iam::144216176388:role/amplify-airbnb-devo-04231-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::144216176388:role/amplify-airbnb-devo-04231-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-airbnb-devo-04231-deployment",
+      "UnauthRoleName": "amplify-airbnb-devo-04231-unauthRole",
+      "StackName": "amplify-airbnb-devo-04231",
+      "StackId": "arn:aws:cloudformation:eu-west-1:144216176388:stack/amplify-airbnb-devo-04231/4f99ec10-f8a2-11eb-a9b4-069ba20644ef",
+      "AmplifyAppId": "d30e2xo4vuiys4"
+    },
+    "categories": {
+      "auth": {
+        "airbnb36875c9b": {}
+      }
+    }
   }
 }
