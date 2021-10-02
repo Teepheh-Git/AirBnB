@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {FlatList, View} from "react-native";
-import feed from "../../../assets/data/feed";
 import Post from "../../components/post";
 import {API, graphqlOperation} from "aws-amplify";
 import {listPosts} from '../../graphql/queries';
